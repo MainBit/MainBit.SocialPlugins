@@ -1,0 +1,50 @@
+﻿@using Orchard.Mvc.Extensions;
+@{
+    if (!WorkContext.HttpContext.Items.Contains("MainBit.SocialPlugins.ShareButtons"))
+    {
+        WorkContext.HttpContext.Items["MainBit.SocialPlugins.ShareButtons"] = null;
+        //var imageUrl = Url.MakeAbsolute("~/media/default/drugoe/") + "" + T("climate-russia-eng.png").ToString();
+
+        using (Script.Foot())
+        {
+            <script src="https://yastatic.net/share2/share.js" async="async"></script>
+        }
+        @*using (Script.Head())
+        {
+            <meta property="og:image" content="@imageUrl" />
+        }*@
+    }
+
+    //https://tech.yandex.ru/share/doc/dg/add-docpage/
+}
+    <div class="share-buttons ya-share2"
+         data-services="odnoklassniki,vkontakte,facebook,twitter,gplus,linkedin"
+         data-url="@(Model.requestedItemDisplayUrl ?? Model.UrlAbsoluteWithoutQuery)"></div>
+@*@{
+    // WorkContext.CurrentCulture
+    Script.Include("http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f1ed1d84d0e6b52");
+}
+<noindex>
+    <div class="addthis_toolbox addthis_default_style" addthis:url="@(Model.Url)">
+        <a rel="nofollow" class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        <a rel="nofollow" class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:locale="en_US" width="500px"></a>
+        <a rel="nofollow" class="addthis_button_tweet"></a>
+        <a rel="nofollow" class="addthis_counter addthis_pill_style"></a>
+    </div>
+</noindex>*@
+@*@{
+    using (Script.Foot())
+    {
+        <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+    }
+    using (Script.Head())
+    {
+        <meta property="og:image" content="@(WorkContext.CurrentSite.BaseUrl)/media/default/drugoe/rigmart-logo-200x200.png" />
+    }
+}
+<noindex>
+    <div id="share-buttons-container">
+        <span class="label">@T("Share with Friends:")</span>
+        <div id="ya_share" data-yashare-link="@(Model.Url)"></div>
+    </div>
+</noindex>*@
