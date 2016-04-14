@@ -9,3 +9,5 @@ Features:
     MainBit.SocialPlugins:
         Description: Provides share buttons elememt
 		Dependencies: Orchard.Layouts, MainBit.Utility
+	MainBit.SocialPlugins.Twitter:
+        Description: Provides a way to make get requests to twitter by using twitter rest api

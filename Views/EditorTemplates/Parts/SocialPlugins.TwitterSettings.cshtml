@@ -1,0 +1,46 @@
+﻿﻿@model MainBit.SocialPlugins.ViewModels.TwitterSettingsEditVM
+
+<fieldset>
+    <legend>@T("Twitter")</legend>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.ConsumerKey)">@T("Consumer key")</label>
+        @Html.TextBoxFor(m => m.ConsumerKey, new { @class = "text medium" })
+        @Html.ValidationMessage("ConsumerKey", "*")
+        <span class="hint"></span>
+    </div>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.ConsumerSecret)">@T("Consumer secret")</label>
+        @Html.TextBoxFor(m => m.ConsumerSecret, new { @class = "text large" })
+        @Html.ValidationMessage("ConsumerSecret", "*")
+        <span class="hint"></span>
+    </div>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.AccessToken)">@T("Access token")</label>
+        @Html.TextBoxFor(m => m.AccessToken, new { @class = "text large" })
+        @Html.ValidationMessage("AccessToken", "*")
+        <span class="hint"></span>
+    </div>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.AccessTokenSecret)">@T("Access token secret")</label>
+        @Html.TextBoxFor(m => m.AccessTokenSecret, new { @class = "text large" })
+        @Html.ValidationMessage("AccessTokenSecret", "*")
+        <span class="hint"></span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.TwitterUser))
+    {
+        <div>
+            <label for="@Html.FieldIdFor(m => m.TwitterUser)">@T("Twitter user (access token)")</label>
+<pre>
+    @Model.TwitterUser
+</pre>
+            <span class="hint"></span>
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.GetUserAccessTokenLink))
+    {
+        <div>
+            <a href="@Model.GetUserAccessTokenLink">@T("Get twitter user (access token)")</a>
+        </div>
+    }
+</fieldset>
